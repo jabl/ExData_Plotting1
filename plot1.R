@@ -7,7 +7,8 @@ read.hpc <- function() {
            colClasses=c("character", "character", rep("numeric", 7)))
   # Fix column names
   colnames(d) <- colnames(t)
-  # Create a new column with POSIXlt type, get rid of the two original ones
+  # Create a new datetime column with POSIXlt type, get rid of the two
+  # original date and time ones
   ts <- paste(d$Date, d$Time)
   d$Date <- NULL
   d$Time <- NULL
@@ -16,6 +17,8 @@ read.hpc <- function() {
 }
 
 makeplot1 <- function() {
+  # Plot to file, by default 480x480 pixels which is what we want so no need to
+  # specify dimensions explicitly
   png(filename="plot1.png")
   d <- read.hpc()
   hist(d$Global_active_power, main="Global active power", xlab="Global active power",
