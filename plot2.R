@@ -12,7 +12,7 @@ read.hpc <- function() {
   ts <- paste(d$Date, d$Time)
   d$Date <- NULL
   d$Time <- NULL
-  d$DateTime <- strptime(ts, "%d/%m/%Y %H:%M:%S")
+  d$datetime <- strptime(ts, "%d/%m/%Y %H:%M:%S")
   d
 }
 
@@ -21,7 +21,7 @@ makeplot2 <- function() {
   # specify dimensions explicitly
   png(filename="plot2.png")
   d <- read.hpc()
-  plot(d$DateTime, d$Global_active_power, main="", xlab="",
+  plot(d$datetime, d$Global_active_power, main="", xlab="",
        ylab="Global Active Power (kilowatts)", type="l")
   dev.off()
 }

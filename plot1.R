@@ -12,7 +12,7 @@ read.hpc <- function() {
   ts <- paste(d$Date, d$Time)
   d$Date <- NULL
   d$Time <- NULL
-  d$DateTime <- strptime(ts, "%d/%m/%Y %H:%M:%S")
+  d$datetime <- strptime(ts, "%d/%m/%Y %H:%M:%S")
   d
 }
 

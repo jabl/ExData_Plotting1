@@ -12,7 +12,7 @@ read.hpc <- function() {
   ts <- paste(d$Date, d$Time)
   d$Date <- NULL
   d$Time <- NULL
-  d$DateTime <- strptime(ts, "%d/%m/%Y %H:%M:%S")
+  d$datetime <- strptime(ts, "%d/%m/%Y %H:%M:%S")
   d
 }
 
@@ -21,11 +21,11 @@ makeplot3 <- function() {
   # specify dimensions explicitly
   png(filename="plot3.png")
   d <- read.hpc()
-  plot(d$DateTime, d$Sub_metering_1, main="", xlab="",
+  plot(d$datetime, d$Sub_metering_1, main="", xlab="",
        ylab="Energy sub metering", type="l")
   mycol <- c("black", "red", "blue")
-  lines(d$DateTime, d$Sub_metering_2, col=mycol[2])
-  lines(d$DateTime, d$Sub_metering_3, col=mycol[3])
+  lines(d$datetime, d$Sub_metering_2, col=mycol[2])
+  lines(d$datetime, d$Sub_metering_3, col=mycol[3])
   legend("topright", lty=c(1,1,1), col=mycol,
          legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   dev.off()
